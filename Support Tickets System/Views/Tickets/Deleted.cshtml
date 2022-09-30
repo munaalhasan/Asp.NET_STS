@@ -1,0 +1,38 @@
+﻿@model SupportTicketsSystem.Website.Models.Tickets.TicketViewModel
+
+@{
+    ViewData["Title"] = "Deleted";
+    Layout = "_LayoutWithLeftMenuTickets";
+}
+
+<h1>Deleted Tickets List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                SerialNumber
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TicketsList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketSerialNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Restore", "Restore", new { deletedTicketId = item.TicketId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

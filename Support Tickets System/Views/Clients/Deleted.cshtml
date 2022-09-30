@@ -1,0 +1,37 @@
+﻿@model SupportTicketsSystem.Website.Models.Clients.ClientViewModel
+
+@{
+    ViewData["Title"] = "Deleted";
+    Layout = "_LayoutWithLeftMenuTickets";
+}
+
+<h1>Deleted Clients List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ClientsList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.ActionLink("Restore", "Restore", new { deletedClientId = item.ClientId }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

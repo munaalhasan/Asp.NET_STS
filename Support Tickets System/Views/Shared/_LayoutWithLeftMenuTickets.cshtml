@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+            <li><a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index">Tickets List</a></li>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Deleted">Deleted Tickets </a></li>
+                <li><a class="nav-link text-dark" asp-area="" asp-controller="TicketsRequest" asp-action="RequestReceived">Confirm Requests</a></li>
+                @*<li><a class="nav-link text-dark" asp-area="" asp-controller="TicketsRequest" asp-action="RequestReceived">Received Requests </a></li>*@
+            }
+            @*<li><a class="nav-link text-dark" asp-area="" asp-controller="TicketsRequest" asp-action="RequestSent">Sent Requests</a></li>*@
+        </ul>
+    </div>
+    <div class="col-9">
+        @RenderBody()
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@RenderSection("Scripts", required: false)

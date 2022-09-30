@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model SupportTicketsSystem.Website.Models.Tickets.TicketViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutWithLeftMenuTickets";
+}
+
+<h1>Tickets</h1>
+
+<p>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    }
+</p>
+
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Description
+            </th>
+            <th>
+                SerialNumber
+            </th>
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <th>
+                    Assigned To Client
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.TicketsList)
+        {
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin") || (SignInManager.IsSignedIn(User) && User.IsInRole("User") && item.ConfirmedReq == false))
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TicketSerialNumber)
+                    </td>
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssignedToClient)
+                        </td>
+                    }
+
+                    <td>
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <a class="btn btn-outline-info" href="/Tickets/Edit?ticketId=@item.TicketId">Edit</a>
+                            <a class="btn btn-outline-success" href="/Tickets/Details?ticketId=@item.TicketId"> Details</a>
+                            <a class="btn btn-outline-danger" href="/Tickets/Delete?ticketId=@item.TicketId"> Delete </a>
+
+                            @*<a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.TicketId"> Details</a>
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.TicketId"> Delete </a>*@
+                        }
+                        @if (UserManager.GetUserName(User) != item.AssignedToClientEmail)
+                        {
+                            <a class="btn btn-outline-primary" href="/TicketsRequest/RequestTicket?id=@item.TicketId">Book Now</a>
+                            @*<a class="btn btn-outline-primary" asp-controller="TicketRequest" asp-action="RequestItem" asp-route-id="@item.TicketId">Book Now</a>*@
+                        }
+
+                    </td>
+                </tr>
+
+                }
+
+            }
+    </tbody>
+
+
+
+    
+</table>
+
+
+

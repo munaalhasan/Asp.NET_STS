@@ -1,0 +1,47 @@
+﻿@model SupportTicketsSystem.Website.Models.Clients.ClientViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutWithLeftMenu";
+}
+
+<h1>Clients</h1>
+
+<div>Clients Count :@Model.ClientsCount</div>
+
+<br/>
+<br/>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ClientsList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientEmail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { clientId = item.ClientId }) |
+                @Html.ActionLink("Details", "Details", new { clientId = item.ClientId }) |
+                @Html.ActionLink("Delete", "Delete", new { clientId = item.ClientId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

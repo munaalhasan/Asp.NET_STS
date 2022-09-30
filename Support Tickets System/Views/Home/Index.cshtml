@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div class="text-center IndexContent">
+    <h1 id="IndexPageWelcome" class="display-1">Welcome</h1>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(new function () {
+            $("#IndexPageWelcome").text("Support Tickets System");
+            $(".IndexContent").addClass("badge badge-dark  d-flex justify-content-center");
+        });
+
+    </script>
+}

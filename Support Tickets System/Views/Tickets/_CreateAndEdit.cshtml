@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@model SupportTicketsSystem.Website.Views.Tickets.CreateAndEditTicketModel
+
+@{
+    string action = Model.IsNewTicket ? "Create" : "Edit";
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SerialNumber"></label>
+                <input asp-for="SerialNumber" class="form-control" />
+                <span asp-validation-for="SerialNumber" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="ClientID" />
+
+            <div class="form-group">
+                <input type="submit" value="@action" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+

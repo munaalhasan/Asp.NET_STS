@@ -1,0 +1,44 @@
+﻿@model SupportTicketsSystem.Website.Models.TicketsRequest.TicketRequestViewModel
+
+@{
+    ViewData["Title"] = "Received Requests";
+    Layout = "_LayoutWithLeftMenuTickets";
+}
+ 
+<h1>ReceivedRequest</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Request From Client
+            </th>
+            <th>
+                Ticket
+            </th>
+            <th>
+                Status 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.RequestsList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestFromClientFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                <a asp-action="Approved" asp-route-id="@item.RequestId" class="btn btn-outline-info">Approved</a>
+                <a asp-action="Rejected" asp-route-id="@item.RequestId" class="btn btn-outline-danger">Rejected</a>
+            </td>
+        </tr>       
+}
+    </tbody>
+</table>

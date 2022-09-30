@@ -1,0 +1,9 @@
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\bin\Debug\netcoreapp3.1\SupportTicketsSystem.Services.deps.json
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\bin\Debug\netcoreapp3.1\SupportTicketsSystem.Services.dll
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\bin\Debug\netcoreapp3.1\SupportTicketsSystem.Services.pdb
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.AssemblyInfo.cs
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.dll
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.pdb
+C:\Users\DELL\source\repos\Support Tickets System\ClassLibrary1\obj\Debug\netcoreapp3.1\SupportTicketsSystem.Services.csprojAssemblyReference.cache
