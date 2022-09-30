@@ -1,4 +1,4 @@
-# Asp.NET_STS Support Tickets System
+Support Tickets System
 Registration form 
 Login Page
 List of Tickets (clients view, Admin view)
